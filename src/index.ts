@@ -4,8 +4,8 @@ import logger from "morgan";
 import { importSchema } from "graphql-import";
 import "./passport";
 import { resolvers } from "./resolvers";
+import { authenticateJwt } from "./passport";
 import { prisma } from "../prisma/prisma-client";
-import passport = require("passport");
 
 const server = new GraphQLServer({
   typeDefs: importSchema("./src/schema.graphql"),
@@ -13,14 +13,7 @@ const server = new GraphQLServer({
   context: ({ req }: { req: any }) => ({ prisma, user: req.user })
 } as any);
 
-server.express.use("/graphql", (req, res, next) => {
-  passport.authenticate("jwt", { session: false }, (err, user, info) => {
-    if (user) {
-      req.user = user;
-    }
-    next();
-  })(req, res, next);
-});
+server.express.use("/graphql", authenticateJwt);
 
 server.express.use(logger("tiny"));
 
