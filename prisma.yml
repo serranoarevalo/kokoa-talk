@@ -1,0 +1,6 @@
+endpoint: https://us1.prisma.sh/nicolas-serrano-arevalo-1287c4/kokoa-talk/dev
+datamodel: datamodel.prisma
+
+generate:
+  - generator: typescript-client
+    output: ./prisma/prisma-client/
