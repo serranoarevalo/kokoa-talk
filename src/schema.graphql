@@ -2,8 +2,10 @@
 # import Chat from '../prisma/prisma.graphql'
 # import Message from '../prisma/prisma.graphql'
 
-type Query {  
+type Query {
+  user: User!
 }
 
 type Mutation {
+  user: User!
 }

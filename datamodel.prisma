@@ -12,11 +12,11 @@ type Chat {
   id: ID! @unique
   users: [User!]!
   messages: [Message!]!
-  read: Bolean! @default(value: "false")
 }
 
 type Message {
   id: ID! @unique
   text: String!
   user: User!
+  read: Boolean! @default(value: "false")
 }
