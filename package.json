@@ -3,16 +3,22 @@
   "version": "0.0.0",
   "main": "src/index.ts",
   "scripts": {
-    "start": "nodemon -x ts-node  src/index.ts",
-    "generate": "graphqlgen"
+    "start": "nodemon -x ts-node src/index.ts -e graphql",
+    "generate": "prisma generate"
   },
   "dependencies": {
+    "@types/express": "^4.16.1",
+    "@types/morgan": "^1.7.35",
+    "@types/node": "^10.12.19",
+    "graphql-import": "^0.7.1",
     "graphql-yoga": "^1.16.7",
+    "morgan": "^1.9.1",
     "prisma-client-lib": "^1.25.4"
   },
   "devDependencies": {
     "graphqlgen": "^0.6.0-rc2",
     "nodemon": "1.18.9",
+    "prisma": "^1.25.4",
     "ts-node": "8.0.2",
     "typescript": "3.2.4"
   },
