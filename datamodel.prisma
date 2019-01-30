@@ -2,6 +2,21 @@ type User {
   id: ID! @unique
   name: String!
   email: String! @unique
-  status: String!
+  status: String! @default(value: "")
   username: String!
+  password: String!
+  friends: [User!]!
+}
+
+type Chat {
+  id: ID! @unique
+  users: [User!]!
+  messages: [Message!]!
+  read: Bolean! @default(value: "false")
+}
+
+type Message {
+  id: ID! @unique
+  text: String!
+  user: User!
 }

@@ -1,4 +1,6 @@
 # import User from '../prisma/prisma.graphql'
+# import Chat from '../prisma/prisma.graphql'
+# import Message from '../prisma/prisma.graphql'
 
 type Query {  
 }
