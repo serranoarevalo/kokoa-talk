@@ -1,0 +1,19 @@
+{
+  "name": "graphqlgen-template-yoga",
+  "version": "0.0.0",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "nodemon -x ts-node --no-cache src/index.ts",
+    "generate": "graphqlgen"
+  },
+  "dependencies": {
+    "graphql-yoga": "^1.16.7"
+  },
+  "devDependencies": {
+    "graphqlgen": "0.5.1",
+    "nodemon": "1.18.9",
+    "ts-node": "8.0.2",
+    "typescript": "3.2.4"
+  },
+  "license": "MIT"
+}
