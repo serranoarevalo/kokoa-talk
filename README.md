@@ -6,11 +6,11 @@ React Native Chat App built with Typescript and Prisma
 
 - [x] Can create account
 - [x] Can see my profile
-- [ ] Can see my friends
-- [ ] Can see my chats
+- [x] Can see my chats
 - [x] Can edit profile
-- [ ] Can search for people
 - [x] Can see people's profile
+- [x] Can search for people
+- [ ] Can get email with loginSecret
 
 ## Message Stories
 
@@ -18,3 +18,4 @@ React Native Chat App built with Typescript and Prisma
 - [ ] Can send a message
 - [ ] Can see chats
 - [ ] Can see chat
+- [ ] Can subscribe to new messages

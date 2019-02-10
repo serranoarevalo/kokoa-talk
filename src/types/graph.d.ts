@@ -1,18 +1,25 @@
-export const typeDefs = ["type User {\n  id: ID!\n  email: String!\n  status: String!\n  loginSecret: String!\n}\n\ntype Chat {\n  id: ID!\n  users: [User!]!\n  messages: [Message!]!\n}\n\ntype Message {\n  id: ID!\n  text: String!\n  user: User!\n  read: Boolean!\n}\n\ntype Mutation {\n  confirmSecret(email: String!, secret: String!): String!\n  createProfile(email: String!): User!\n  requestSecret(email: String!): Boolean!\n  updateStatus(status: String!): User!\n}\n\ntype Query {\n  myProfile: User!\n  profile(id: String!): User!\n  profileFriends(id: String!): [User!]!\n}\n"];
+export const typeDefs = ["type User {\n  id: ID!\n  email: String!\n  status: String!\n  loginSecret: String!\n}\n\ntype Chat {\n  id: ID!\n  users: [User!]!\n  messages: [Message!]!\n}\n\ntype Message {\n  id: ID!\n  text: String!\n  user: User!\n  read: Boolean!\n}\n\ntype Mutation {\n  confirmSecret(email: String!, secret: String!): String!\n  createProfile(email: String!): User!\n  requestSecret(email: String!): Boolean!\n  updateStatus(status: String!): User!\n}\n\ntype Query {\n  myChats: [Chat!]!\n  myProfile: User!\n  search(email: String!): [User!]!\n  profile(id: String!): User!\n}\n"];
 /* tslint:disable */
 
 export interface Query {
+  myChats: Array<Chat>;
   myProfile: User;
+  search: Array<User>;
   profile: User;
-  profileFriends: Array<User>;
+}
+
+export interface SearchQueryArgs {
+  email: string;
 }
 
 export interface ProfileQueryArgs {
   id: string;
 }
 
-export interface ProfileFriendsQueryArgs {
+export interface Chat {
   id: string;
+  users: Array<User>;
+  messages: Array<Message>;
 }
 
 export interface User {
@@ -20,6 +27,13 @@ export interface User {
   email: string;
   status: string;
   loginSecret: string;
+}
+
+export interface Message {
+  id: string;
+  text: string;
+  user: User;
+  read: boolean;
 }
 
 export interface Mutation {
@@ -44,17 +58,4 @@ export interface RequestSecretMutationArgs {
 
 export interface UpdateStatusMutationArgs {
   status: string;
-}
-
-export interface Chat {
-  id: string;
-  users: Array<User>;
-  messages: Array<Message>;
-}
-
-export interface Message {
-  id: string;
-  text: string;
-  user: User;
-  read: boolean;
 }

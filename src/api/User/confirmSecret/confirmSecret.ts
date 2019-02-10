@@ -12,6 +12,10 @@ export default {
       const user = await prisma.user({ loginSecret: secret, email });
       if (user) {
         const token = signJwt(user.id);
+        await prisma.updateUser({
+          data: { loginSecret: "" },
+          where: { email }
+        });
         return token;
       } else {
         throw Error("Secret not confirmed");

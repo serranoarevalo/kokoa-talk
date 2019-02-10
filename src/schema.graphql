@@ -26,7 +26,8 @@ type Mutation {
 }
 
 type Query {
+  myChats: [Chat!]!
   myProfile: User!
+  search(email: String!): [User!]!
   profile(id: String!): User!
-  profileFriends(id: String!): [User!]!
 }
