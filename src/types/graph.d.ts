@@ -1,8 +1,18 @@
-export const typeDefs = ["type Mutation {\n  confirmSecret(email: String!, secret: String!): String!\n  createProfile(email: String!): User!\n  requestSecret(email: String!): Boolean!\n  updateStatus(status: String!): User!\n}\n\ntype Query {\n  myProfile: User!\n}\n\ntype User {\n  id: ID!\n  email: String!\n  status: String!\n  loginSecret: String!\n  friends: [User!]!\n  chats: [Chat!]!\n  messages: [Message!]!\n}\n\ntype Chat {\n  id: ID!\n  users: [User!]!\n  messages: [Message!]!\n}\n\ntype Message {\n  id: ID!\n  text: String!\n  user: User!\n  read: Boolean!\n}\n"];
+export const typeDefs = ["type User {\n  id: ID!\n  email: String!\n  status: String!\n  loginSecret: String!\n}\n\ntype Chat {\n  id: ID!\n  users: [User!]!\n  messages: [Message!]!\n}\n\ntype Message {\n  id: ID!\n  text: String!\n  user: User!\n  read: Boolean!\n}\n\ntype Mutation {\n  confirmSecret(email: String!, secret: String!): String!\n  createProfile(email: String!): User!\n  requestSecret(email: String!): Boolean!\n  updateStatus(status: String!): User!\n}\n\ntype Query {\n  myProfile: User!\n  profile(id: String!): User!\n  profileFriends(id: String!): [User!]!\n}\n"];
 /* tslint:disable */
 
 export interface Query {
   myProfile: User;
+  profile: User;
+  profileFriends: Array<User>;
+}
+
+export interface ProfileQueryArgs {
+  id: string;
+}
+
+export interface ProfileFriendsQueryArgs {
+  id: string;
 }
 
 export interface User {
@@ -10,22 +20,6 @@ export interface User {
   email: string;
   status: string;
   loginSecret: string;
-  friends: Array<User>;
-  chats: Array<Chat>;
-  messages: Array<Message>;
-}
-
-export interface Chat {
-  id: string;
-  users: Array<User>;
-  messages: Array<Message>;
-}
-
-export interface Message {
-  id: string;
-  text: string;
-  user: User;
-  read: boolean;
 }
 
 export interface Mutation {
@@ -50,4 +44,17 @@ export interface RequestSecretMutationArgs {
 
 export interface UpdateStatusMutationArgs {
   status: string;
+}
+
+export interface Chat {
+  id: string;
+  users: Array<User>;
+  messages: Array<Message>;
+}
+
+export interface Message {
+  id: string;
+  text: string;
+  user: User;
+  read: boolean;
 }

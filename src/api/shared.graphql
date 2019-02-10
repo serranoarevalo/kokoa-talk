@@ -3,9 +3,6 @@ type User {
   email: String!
   status: String!
   loginSecret: String!
-  friends: [User!]!
-  chats: [Chat!]!
-  messages: [Message!]!
 }
 
 type Chat {
