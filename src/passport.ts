@@ -1,7 +1,8 @@
 import passport from "passport";
 import { Strategy, ExtractJwt, StrategyOptions } from "passport-jwt";
-import { prisma } from "../prisma/prisma-client";
 import { NextFunction, Request, Response } from "express";
+import jwt from "jsonwebtoken";
+import { prisma } from "../prisma/prisma-client";
 
 const options: StrategyOptions = {
   secretOrKey: process.env.JWT_SECRET,
@@ -24,6 +25,8 @@ export const authenticateJwt = (
     }
     next();
   })(req, res, next);
+
+export const signJwt = id => jwt.sign({ id }, process.env.JWT_SECRET as any);
 
 passport.use(strategy);
 passport.initialize();

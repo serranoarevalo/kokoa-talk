@@ -2,6 +2,7 @@ type User {
   id: ID!
   email: String!
   status: String!
+  loginSecret: String!
   friends: [User!]!
   chats: [Chat!]!
   messages: [Message!]!
@@ -20,10 +21,12 @@ type Message {
   read: Boolean!
 }
 
-type Mutation {
-  createProfile(email: String!): User!
+type Query {
+  confirmSecret(email: String!, secret: String!): String!
+  myProfile: User!
 }
 
-type Query {
-  myProfile: User!
+type Mutation {
+  createProfile(email: String!): User!
+  requestSecret(email: String!): Boolean!
 }

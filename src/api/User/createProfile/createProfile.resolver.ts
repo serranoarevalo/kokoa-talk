@@ -1,6 +1,5 @@
 import { prisma, User } from "../../../../prisma/prisma-client";
 import { CreateProfileMutationArgs } from "../../../types/graph";
-import { secretGenerator } from "../../../utils";
 
 export default {
   Mutation: {

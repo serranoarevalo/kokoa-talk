@@ -7,10 +7,10 @@ import "./passport";
 
 const server = new GraphQLServer({
   schema,
-  context: (req: any) => ({ req })
+  context: ({ request }: any) => ({ request })
 });
 
-server.express.use("/graphql", authenticateJwt);
+server.express.use(authenticateJwt);
 
 server.express.use(logger("tiny"));
 

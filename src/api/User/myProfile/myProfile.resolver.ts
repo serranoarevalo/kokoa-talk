@@ -3,9 +3,9 @@ import { isAuthenticated } from "../../../middlewares";
 
 export default {
   Query: {
-    myProfile: async (_, __, { req }): Promise<User> => {
-      isAuthenticated(req);
-      const user = await prisma.user({ id: req.user.id });
+    myProfile: async (_, __, { request }): Promise<User> => {
+      isAuthenticated(request);
+      const user = await prisma.user({ id: request.user.id });
       return user;
     }
   }
