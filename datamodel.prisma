@@ -2,6 +2,7 @@ type User {
   id: ID! @unique
   email: String! @unique
   status: String! @default(value: "")
+  loginSecret: String @default(value: "")
   friends: [User!]!
   chats: [Chat!]!
   messages: [Message!]!

@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "start": "nodemon --exec ts-node src/index.ts",
+    "prisma": "yarn run prisma:deploy && yarn run prisma:generate && yarn types",
     "prisma:generate": "prisma generate",
     "prisma:deploy": "prisma deploy",
     "pretypes": "gql-merge --out-file ./src/schema.graphql ./src/api/**/*.graphql",

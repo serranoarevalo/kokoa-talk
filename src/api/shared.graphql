@@ -2,6 +2,7 @@ type User {
   id: ID!
   email: String!
   status: String!
+  loginSecret: String!
   friends: [User!]!
   chats: [Chat!]!
   messages: [Message!]!
