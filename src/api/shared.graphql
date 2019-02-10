@@ -19,11 +19,3 @@ type Message {
   user: User!
   read: Boolean!
 }
-
-type Mutation {
-  createProfile(email: String!): User!
-}
-
-type Query {
-  myProfile: User!
-}

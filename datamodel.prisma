@@ -1,11 +1,10 @@
 type User {
   id: ID! @unique
-  name: String!
   email: String! @unique
   status: String! @default(value: "")
-  username: String!
-  password: String!
   friends: [User!]!
+  chats: [Chat!]!
+  messages: [Message!]!
 }
 
 type Chat {
