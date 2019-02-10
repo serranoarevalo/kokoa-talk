@@ -6,7 +6,7 @@ React Native Chat App built with Typescript and Prisma
 
 - [x] Can create account
 - [x] Can see my profile
-- [ ] Can edit profile
+- [x] Can edit profile
 - [ ] Can search for people
 - [ ] Can see people's profile
 - [ ] Can add people as friends

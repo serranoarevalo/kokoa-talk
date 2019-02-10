@@ -20,14 +20,3 @@ type Message {
   user: User!
   read: Boolean!
 }
-
-type Mutation {
-  confirmSecret(email: String!, secret: String!): String!
-  createProfile(email: String!): User!
-  requestSecret(email: String!): Boolean!
-  updateStatus(status: String!): User!
-}
-
-type Query {
-  myProfile: User!
-}
