@@ -4,6 +4,7 @@ import logger from "morgan";
 import { authenticateJwt } from "./passport";
 import schema from "./schema";
 import "./passport";
+import "./mailer";
 
 const server = new GraphQLServer({
   schema,
