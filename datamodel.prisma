@@ -17,4 +17,5 @@ type Message {
   text: String!
   user: User!
   read: Boolean! @default(value: "false")
+  chat: Chat!
 }
