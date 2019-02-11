@@ -1,11 +1,16 @@
-export const typeDefs = ["type Mutation {\n  createChat(users: [String!]!): Chat!\n  confirmSecret(email: String!, secret: String!): String!\n  createProfile(email: String!): User!\n  requestSecret(email: String!): Boolean!\n  updateStatus(status: String!): User!\n}\n\ntype User {\n  id: ID!\n  email: String!\n  status: String!\n  loginSecret: String!\n}\n\ntype Chat {\n  id: ID!\n  users: [User!]!\n  messages: [Message!]!\n}\n\ntype Message {\n  id: ID!\n  text: String!\n  user: User!\n  read: Boolean!\n}\n\ntype Query {\n  myChats: [Chat!]!\n  myProfile: User!\n  search(email: String!): [User!]!\n  profile(id: String!): User!\n}\n"];
+export const typeDefs = ["type Mutation {\n  createChat(users: [String!]!): Chat!\n  confirmSecret(email: String!, secret: String!): String!\n  createProfile(email: String!): User!\n  requestSecret(email: String!): Boolean!\n  updateStatus(status: String!): User!\n}\n\ntype Query {\n  seeChat(id: String!): [Message!]!\n  myChats: [Chat!]!\n  myProfile: User!\n  search(email: String!): [User!]!\n  profile(id: String!): User!\n}\n\ntype User {\n  id: ID!\n  email: String!\n  status: String!\n  loginSecret: String!\n}\n\ntype Chat {\n  id: ID!\n  users: [User!]!\n  messages: [Message!]!\n}\n\ntype Message {\n  id: ID!\n  text: String!\n  user: User!\n  read: Boolean!\n}\n"];
 /* tslint:disable */
 
 export interface Query {
+  seeChat: Array<Message>;
   myChats: Array<Chat>;
   myProfile: User;
   search: Array<User>;
   profile: User;
+}
+
+export interface SeeChatQueryArgs {
+  id: string;
 }
 
 export interface SearchQueryArgs {
@@ -16,10 +21,11 @@ export interface ProfileQueryArgs {
   id: string;
 }
 
-export interface Chat {
+export interface Message {
   id: string;
-  users: Array<User>;
-  messages: Array<Message>;
+  text: string;
+  user: User;
+  read: boolean;
 }
 
 export interface User {
@@ -29,11 +35,10 @@ export interface User {
   loginSecret: string;
 }
 
-export interface Message {
+export interface Chat {
   id: string;
-  text: string;
-  user: User;
-  read: boolean;
+  users: Array<User>;
+  messages: Array<Message>;
 }
 
 export interface Mutation {

@@ -6,6 +6,14 @@ type Mutation {
   updateStatus(status: String!): User!
 }
 
+type Query {
+  seeChat(id: String!): [Message!]!
+  myChats: [Chat!]!
+  myProfile: User!
+  search(email: String!): [User!]!
+  profile(id: String!): User!
+}
+
 type User {
   id: ID!
   email: String!
@@ -24,11 +32,4 @@ type Message {
   text: String!
   user: User!
   read: Boolean!
-}
-
-type Query {
-  myChats: [Chat!]!
-  myProfile: User!
-  search(email: String!): [User!]!
-  profile(id: String!): User!
 }

@@ -14,8 +14,8 @@ React Native Chat App built with Typescript and Prisma
 
 ## Message Stories
 
-- [ ] Can create a chat
-- [ ] Can send a message
-- [ ] Can see chats
+- [x] Can create a chat
 - [ ] Can see chat
+- [ ] Can see chats
+- [ ] Can send a message
 - [ ] Can subscribe to new messages
