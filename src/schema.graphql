@@ -7,7 +7,8 @@ type Mutation {
 }
 
 type Query {
-  seeChat(id: String!): [Message!]!
+  seeChat(id: String!): Chat!
+  seeChats: [Chat!]!
   myChats: [Chat!]!
   myProfile: User!
   search(email: String!): [User!]!

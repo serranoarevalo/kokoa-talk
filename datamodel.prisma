@@ -3,6 +3,7 @@ type User {
   email: String! @unique
   status: String! @default(value: "")
   loginSecret: String @default(value: "") @unique
+  chats: [Chat!]!
 }
 
 type Chat {
