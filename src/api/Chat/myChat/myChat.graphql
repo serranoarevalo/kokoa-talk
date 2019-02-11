@@ -1,0 +1,3 @@
+type Query {
+  myChat(id: String!): Chat!
+}

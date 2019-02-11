@@ -17,5 +17,5 @@ React Native Chat App built with Typescript and Prisma
 - [x] Can create a chat
 - [x] Can see chat
 - [x] Can see chats
-- [ ] Can send a message
+- [x] Can send a message
 - [ ] Can subscribe to new messages

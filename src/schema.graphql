@@ -1,6 +1,6 @@
 type Mutation {
   createChat(users: [String!]!): Chat!
-  sendMessage(text: String!, chatId: String!): Message!
+  sendMessage(text: String!, chatId: String!): Message
   confirmSecret(email: String!, secret: String!): String!
   createProfile(email: String!): User!
   requestSecret(email: String!): Boolean!
@@ -8,11 +8,19 @@ type Mutation {
 }
 
 type Query {
+  myChat(id: String!): Chat!
   myChats: [Chat!]!
-  seeChat(id: String!): Chat!
   myProfile: User!
   search(email: String!): [User!]!
   profile(id: String!): User!
+}
+
+type SubscriptionPayload {
+  node: Message
+}
+
+type Subscription {
+  subscribeToChat(chatId: String!): SubscriptionPayload!
 }
 
 type User {

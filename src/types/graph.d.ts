@@ -1,15 +1,15 @@
-export const typeDefs = ["type Mutation {\n  createChat(users: [String!]!): Chat!\n  sendMessage(text: String!, chatId: String!): Message!\n  confirmSecret(email: String!, secret: String!): String!\n  createProfile(email: String!): User!\n  requestSecret(email: String!): Boolean!\n  updateStatus(status: String!): User!\n}\n\ntype Query {\n  myChats: [Chat!]!\n  seeChat(id: String!): Chat!\n  myProfile: User!\n  search(email: String!): [User!]!\n  profile(id: String!): User!\n}\n\ntype User {\n  id: ID!\n  email: String!\n  status: String!\n  loginSecret: String!\n}\n\ntype Chat {\n  id: ID!\n  users: [User!]!\n  messages: [Message!]!\n}\n\ntype Message {\n  id: ID!\n  text: String!\n  user: User!\n  read: Boolean!\n}\n"];
+export const typeDefs = ["type Mutation {\n  createChat(users: [String!]!): Chat!\n  sendMessage(text: String!, chatId: String!): Message\n  confirmSecret(email: String!, secret: String!): String!\n  createProfile(email: String!): User!\n  requestSecret(email: String!): Boolean!\n  updateStatus(status: String!): User!\n}\n\ntype Query {\n  myChat(id: String!): Chat!\n  myChats: [Chat!]!\n  myProfile: User!\n  search(email: String!): [User!]!\n  profile(id: String!): User!\n}\n\ntype SubscriptionPayload {\n  node: Message\n}\n\ntype Subscription {\n  subscribeToChat(chatId: String!): SubscriptionPayload!\n}\n\ntype User {\n  id: ID!\n  email: String!\n  status: String!\n  loginSecret: String!\n}\n\ntype Chat {\n  id: ID!\n  users: [User!]!\n  messages: [Message!]!\n}\n\ntype Message {\n  id: ID!\n  text: String!\n  user: User!\n  read: Boolean!\n}\n"];
 /* tslint:disable */
 
 export interface Query {
+  myChat: Chat;
   myChats: Array<Chat>;
-  seeChat: Chat;
   myProfile: User;
   search: Array<User>;
   profile: User;
 }
 
-export interface SeeChatQueryArgs {
+export interface MyChatQueryArgs {
   id: string;
 }
 
@@ -43,7 +43,7 @@ export interface Message {
 
 export interface Mutation {
   createChat: Chat;
-  sendMessage: Message;
+  sendMessage: Message | null;
   confirmSecret: string;
   createProfile: User;
   requestSecret: boolean;
@@ -74,4 +74,16 @@ export interface RequestSecretMutationArgs {
 
 export interface UpdateStatusMutationArgs {
   status: string;
+}
+
+export interface Subscription {
+  subscribeToChat: SubscriptionPayload;
+}
+
+export interface SubscribeToChatSubscriptionArgs {
+  chatId: string;
+}
+
+export interface SubscriptionPayload {
+  node: Message | null;
 }
