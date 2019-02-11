@@ -1,5 +1,10 @@
+type Subscription {
+  chatUpdates(id: String!): Message
+}
+
 type Mutation {
   createChat(users: [String!]!): Chat!
+  readMessage(id: String!): Boolean!
   sendMessage(text: String!, chatId: String!): Message
   confirmSecret(email: String!, secret: String!): String!
   createProfile(email: String!): User!
@@ -13,14 +18,6 @@ type Query {
   myProfile: User!
   search(email: String!): [User!]!
   profile(id: String!): User!
-}
-
-type SubscriptionPayload {
-  node: Message
-}
-
-type Subscription {
-  subscribeToChat(chatId: String!): SubscriptionPayload!
 }
 
 type User {

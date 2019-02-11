@@ -1,16 +1,16 @@
-import { SubscribeToChatSubscriptionArgs } from "../../../types/graph";
+import { ChatUpdatesSubscriptionArgs } from "../../../types/graph";
 import { prisma } from "../../../../prisma/prisma-client";
 import { MESSAGE_USER } from "../../../relationFragments";
 
 export default {
   Subscription: {
     chatUpdates: {
-      subscribe: async (_, args: SubscribeToChatSubscriptionArgs) =>
+      subscribe: async (_, args: ChatUpdatesSubscriptionArgs) =>
         await prisma.$subscribe
           .message({
             AND: [
               { mutation_in: ["CREATED"] },
-              { node: { chat: { id: args.chatId } } }
+              { node: { chat: { id: args.id } } }
             ]
           })
           .node()

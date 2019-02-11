@@ -1,7 +1,3 @@
-type MessageSubscriptionPayload {
-  node: Message
-}
-
 type Subscription {
-  chatUpdates(chatId: String!): Message
+  chatUpdates(id: String!): Message
 }
